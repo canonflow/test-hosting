@@ -30,7 +30,8 @@
                 <div class="p-6 text-gray-900">
                     @foreach($posts as $post)
                         {{-- <p>{{ $post['url'] }}</p> --}}
-                        <img src="/{{ $post['url'] }}" alt="kosong">
+                        {{-- <img src="/{{ $post['url'] }}" alt="kosong"> --}}
+                        <img src="{{  asset('/' . $post['url']) }}" alt="kosong">
                     @endforeach
                 </div>
             </div>
