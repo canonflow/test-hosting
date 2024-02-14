@@ -15,6 +15,8 @@ class PostController extends Controller
     }
 
     public function store(Request $request) {
+        // dd(public_path('storage'), storage_path('app/storage'));
+        //dd(__DIR__);
         $request->validate([
             'post' => ['required', 'file', 'max:100000', 'mimes:jpeg,jpg,png']
         ]);
@@ -35,6 +37,19 @@ class PostController extends Controller
         );
         $post->url = "storage/posts/" . $user->name . "/" . $fileName;
         $post->save();
+
+        // if (file_exists("../../../public/storage")) {
+        //     rmdir("../../../public/storage");
+        // }
+        // $res = shell_exec("ls");
+        // dd($res);
+
+        // if (file_exists('storage')) {
+        //     shell_exec('rm -rf storage');
+        // }
+
+        // \Illuminate\Support\Facades\Artisan::call('storage:link');
+        // //shell_exec("ln -s ../storage/app/public storage/public");
 
         return back()->with('success', 'Berhasil menyimpan post!');
     }
