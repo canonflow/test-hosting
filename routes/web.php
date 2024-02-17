@@ -23,6 +23,10 @@ Route::get('/test', function () {
     return view('test');
 });
 
+Route::get('/picker', function () {
+    return view('datepicker');
+});
+
 Route::get('/generate', function(){
     \Illuminate\Support\Facades\Artisan::call('storage:link');
     echo 'ok';
