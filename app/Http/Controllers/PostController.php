@@ -31,7 +31,7 @@ class PostController extends Controller
 
         $post = new Post;
         $post->user_id = $user->id;
-        $fileName = time() . '' . $request->file('post')->getClientOriginalExtension();
+        $fileName = time() . '.' . $request->file('post')->getClientOriginalExtension();
         $request->file('post')->storeAs(
             'public/posts/'. $user->name, $fileName, ['disks' => 'public']
         );
