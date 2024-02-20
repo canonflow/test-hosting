@@ -17,9 +17,9 @@ class PostController extends Controller
     public function store(Request $request) {
         // dd(public_path('storage'), storage_path('app/storage'));
         //dd(__DIR__);
-        $request->validate([
-            'post' => ['required', 'file', 'max:100000', 'mimes:jpeg,jpg,png']
-        ]);
+        // $request->validate([
+        //     'post' => ['required', 'file', 'max:100000', 'mimes:jpeg,jpg,png']
+        // ]);
 
         // $post = $request->file('post');
         // // dd($post);
@@ -31,7 +31,7 @@ class PostController extends Controller
 
         $post = new Post;
         $post->user_id = $user->id;
-        $fileName = time() . '.png';
+        $fileName = time() . '' . $request->file('post')->getClientOriginalExtension();
         $request->file('post')->storeAs(
             'public/posts/'. $user->name, $fileName, ['disks' => 'public']
         );
