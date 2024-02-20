@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
+use Yaza\LaravelGoogleDriveStorage\Gdrive;
 
 class PostController extends Controller
 {
@@ -15,6 +16,9 @@ class PostController extends Controller
     }
 
     public function store(Request $request) {
+        $fileName = time() . '.' . $request->file('post')->getClientOriginalExtension();
+        Gdrive::put($fileName, $request->file('file'));
+        return back()->with('success', 'Berhasil menyimpan post!');
         // dd(public_path('storage'), storage_path('app/storage'));
         //dd(__DIR__);
         // $request->validate([
