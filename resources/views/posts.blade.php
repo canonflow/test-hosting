@@ -70,7 +70,8 @@
                     },
                     complete: function(xhr) {
                         progress.value = 0;
-                    }
+                    },
+                    clearForm: true,
                 });
             });
         });
