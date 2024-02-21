@@ -67,6 +67,9 @@
                         alert("Gagal!");
                         console.log("ERROR");
                         console.log(xhr);
+                    },
+                    complete: function(xhr) {
+                        progress.value = 0;
                     }
                 });
             });
