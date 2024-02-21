@@ -21,10 +21,14 @@
                     </div>
                 @enderror
                 <div class="p-6">
-                    <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data" id="fileUploadForm">
                         @csrf
                         <input type="file" class="file-input file-input-bordered w-full max-w-xs" name="post"/>
                         <button class="btn btn-primary text-white" type="submit">Submit</button>
+
+                        <div class="mt-5">
+                            <progress class="progress progress-error w-56" value="0" max="100" id="progress"></progress>
+                        </div>
                     </form>
                 </div>
                 <div class="p-6 text-gray-900">
@@ -37,4 +41,29 @@
             </div>
         </div>
     </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
+    <script>
+        $(function () {
+            $(document).ready(function () {
+                let progress = document.getElementById('progress');
+                $('#fileUploadForm').ajaxForm({
+                    beforeSend: function () {
+                        var percentage = '0';
+                    },
+                    uploadProgress: function (event, position, total, percentComplete) {
+                        var percentage = percentComplete;
+                        // $('.progress .progress-bar').css("width", percentage+'%', function() {
+                        //   return $(this).attr("aria-valuenow", percentage) + "%";
+                        // })
+                        progress.value = percentComplete;
+                    },
+                    complete: function (xhr) {
+                        console.log('File has uploaded');
+                    }
+                });
+            });
+        });
+    </script>
 </x-app-layout>

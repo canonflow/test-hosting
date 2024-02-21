@@ -27,6 +27,10 @@
         <input type="text" id="dateMax" class="input input-bordered input-primary my-5 text-white rounded-md" placeholder="Enter date" readonly>
     </div>
 
+    <div class="pt-5">
+        <progress class="progress progress-error w-56" value="0" max="100" id="progress"></progress>
+    </div>
+
     <script type="module">
         const dp = datePicker("#date");
         const { dpMin, dpMax } = minMaxDatePicker("#dateMin", "#dateMax");
@@ -34,6 +38,14 @@
     </script>
     <script>
         const inputDP = document.getElementById('date');
+        const progress = document.getElementById('progress');
+        let prg = 1;
+        setInterval(() => {
+            progress.value = prg;
+            prg++;
+        }, 10);
+
+
         const getValue = () => {
             // console.log(new Date(inputDP.value).toLocaleString('en-US', { 
             //         year: 'numeric',
