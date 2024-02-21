@@ -60,6 +60,7 @@
                         progress.value = percentComplete;
                     },
                     complete: function (xhr) {
+                        alert("FIle has uploaded");
                         console.log('File has uploaded');
                     }
                 });
