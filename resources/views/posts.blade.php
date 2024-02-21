@@ -62,6 +62,11 @@
                     complete: function (xhr) {
                         alert("FIle has uploaded");
                         console.log('File has uploaded');
+                    },
+                    error: function(xhr) {
+                        alert("Gagal!");
+                        console.log("ERROR");
+                        console.log(xhr);
                     }
                 });
             });
