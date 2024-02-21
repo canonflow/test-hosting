@@ -18,7 +18,7 @@ class PostController extends Controller
     public function store(Request $request) {
         $fileName = time() . '.' . $request->file('post')->getClientOriginalExtension();
         Gdrive::put($fileName, $request->file('post'));
-        return back()->with('success', 'Berhasil menyimpan post!');
+        //return back()->with('success', 'Berhasil menyimpan post!');
         // dd(public_path('storage'), storage_path('app/storage'));
         //dd(__DIR__);
         // $request->validate([
