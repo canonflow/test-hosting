@@ -51,6 +51,7 @@
                 $('#fileUploadForm').ajaxForm({
                     beforeSend: function () {
                         var percentage = '0';
+                        progress.value = percentage;
                     },
                     uploadProgress: function (event, position, total, percentComplete) {
                         var percentage = percentComplete;
